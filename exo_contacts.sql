@@ -32,3 +32,16 @@ CREATE TABLE IF NOT EXISTS telephone (
     type ENUM('mobile', 'travail', 'maison') NOT NULL,
     FOREIGN KEY (id_contact) REFERENCES contacts(id)
 );
+
+-- Insertion des données dans 'pays'
+INSERT INTO pays (iso_3, nom, iso_2, nationalite) VALUES
+('USA', 'United States', 'US', 'American'),
+('GBR', 'United Kingdom', 'GB', 'British'),
+('CAN', 'Canada', 'CA', 'Canadian'),
+('FRA', 'France', 'FR', 'French'),
+('DEU', 'Germany', 'DE', 'German'),
+('JPN', 'Japan', 'JP', 'Japanese'),
+('AUS', 'Australia', 'AU', 'Australian'),
+('ITA', 'Italy', 'IT', 'Italian'),
+('ESP', 'Spain', 'ES', 'Spanish'),
+('BRA', 'Brazil', 'BR', 'Brazilian');
