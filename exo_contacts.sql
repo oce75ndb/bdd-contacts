@@ -1,4 +1,4 @@
--- Creation database
+-- Creation de la base de données et utilisation de celle-ci
 CREATE DATABASE IF NOT EXISTS exo_contacts;
 USE exo_contacts;
 
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS contacts (
     nom VARCHAR(70) NOT NULL,
     prenom VARCHAR(70) NOT NULL,
     date_de_naissance DATE NOT NULL,
-    sexe VARCHAR(1) CHECK (sexe IN ('M', 'F')) NOT NULL,
+    sexe ENUM('M', 'F') NOT NULL,
     adresse TEXT,
     cp VARCHAR(10),
     ville VARCHAR(70),
@@ -70,3 +70,4 @@ INSERT INTO telephone (id_contact, numero, type) VALUES
 (7, '555-0701', 'mobile'),
 (8, '555-0801', 'travail'),
 (9, '555-0901', 'mobile');
+
