@@ -58,3 +58,15 @@ INSERT INTO contacts (nom, prenom, date_de_naissance, sexe, adresse, cp, ville, 
 ('Anderson', 'Lisa', '1986-08-08', 'F', '505 Redwood St', '89012', 'San Diego', 'USA'),
 ('Garcia', 'Carlos', '1995-09-09', 'M', '606 Pineapple St', '90123', 'Miami', 'USA'),
 ('Martinez', 'Isabella', '1998-10-10', 'F', '707 Orange St', '01234', 'San Francisco', 'USA');
+
+INSERT INTO telephone (id_contact, numero, type) VALUES
+(1, '555-0101', 'mobile'),
+(1, '555-0102', 'maison'),
+(2, '555-0201', 'mobile'),
+(3, '555-0301', 'mobile'),
+(4, '555-0401', 'travail'),
+(5, '555-0501', 'mobile'),
+(6, '555-0601', 'maison'),
+(7, '555-0701', 'mobile'),
+(8, '555-0801', 'travail'),
+(9, '555-0901', 'mobile');
