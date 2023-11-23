@@ -23,3 +23,12 @@ CREATE TABLE IF NOT EXISTS contacts (
     pays_iso_3 VARCHAR(3) NOT NULL,
     FOREIGN KEY (pays_iso_3) REFERENCES pays(iso_3)
 );
+
+-- Creation d'une table 'telephone'
+CREATE TABLE IF NOT EXISTS telephone (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_contact INT NOT NULL,
+    numero VARCHAR(30) NOT NULL,
+    type ENUM('mobile', 'travail', 'maison') NOT NULL,
+    FOREIGN KEY (id_contact) REFERENCES contacts(id)
+);
