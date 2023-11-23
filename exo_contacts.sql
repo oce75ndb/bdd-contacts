@@ -1,5 +1,6 @@
 -- Creation de la base de données et utilisation de celle-ci
-CREATE DATABASE IF NOT EXISTS exo_contacts;
+DROP DATABASE IF EXISTS exo_contacts;
+CREATE DATABASE exo_contacts;
 USE exo_contacts;
 
 -- Creation d'une table 'pays'
@@ -8,29 +9,6 @@ CREATE TABLE IF NOT EXISTS pays (
     nom VARCHAR(50) NOT NULL,
     iso_2 VARCHAR(2) NOT NULL,
     nationalite VARCHAR(50) NOT NULL
-);
-
--- Creation d'une table 'contacts'
-CREATE TABLE IF NOT EXISTS contacts (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(70) NOT NULL,
-    prenom VARCHAR(70) NOT NULL,
-    date_de_naissance DATE NOT NULL,
-    sexe ENUM('M', 'F') NOT NULL,
-    adresse TEXT,
-    cp VARCHAR(10),
-    ville VARCHAR(70),
-    pays_iso_3 VARCHAR(3) NOT NULL,
-    FOREIGN KEY (pays_iso_3) REFERENCES pays(iso_3)
-);
-
--- Creation d'une table 'telephone'
-CREATE TABLE IF NOT EXISTS telephone (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id_contact INT NOT NULL,
-    numero VARCHAR(30) NOT NULL,
-    type ENUM('mobile', 'travail', 'maison') NOT NULL,
-    FOREIGN KEY (id_contact) REFERENCES contacts(id)
 );
 
 -- Insertion des données dans 'pays'
@@ -46,6 +24,20 @@ INSERT INTO pays (iso_3, nom, iso_2, nationalite) VALUES
 ('ESP', 'Spain', 'ES', 'Spanish'),
 ('BRA', 'Brazil', 'BR', 'Brazilian');
 
+-- Creation d'une table 'contacts'
+CREATE TABLE IF NOT EXISTS contacts (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(70) NOT NULL,
+    prenom VARCHAR(70) NOT NULL,
+    date_de_naissance DATE NOT NULL,
+    sexe ENUM('M', 'F') NOT NULL,
+    adresse TEXT,
+    cp VARCHAR(10),
+    ville VARCHAR(70),
+    pays_iso_3 VARCHAR(3) NOT NULL,
+    FOREIGN KEY (pays_iso_3) REFERENCES pays(iso_3)
+);
+
 -- Insertion des données dans 'contacts'
 INSERT INTO contacts (nom, prenom, date_de_naissance, sexe, adresse, cp, ville, pays_iso_3) VALUES
 ('Doe', 'John', '1980-01-01', 'M', '123 Main St', '12345', 'New York', 'USA'),
@@ -58,6 +50,15 @@ INSERT INTO contacts (nom, prenom, date_de_naissance, sexe, adresse, cp, ville, 
 ('Anderson', 'Lisa', '1986-08-08', 'F', '505 Redwood St', '89012', 'San Diego', 'USA'),
 ('Garcia', 'Carlos', '1995-09-09', 'M', '606 Pineapple St', '90123', 'Miami', 'USA'),
 ('Martinez', 'Isabella', '1998-10-10', 'F', '707 Orange St', '01234', 'San Francisco', 'USA');
+
+-- Creation d'une table 'telephone'
+CREATE TABLE IF NOT EXISTS telephone (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_contact INT NOT NULL,
+    numero VARCHAR(30) NOT NULL,
+    type ENUM('mobile', 'travail', 'maison') NOT NULL,
+    FOREIGN KEY (id_contact) REFERENCES contacts(id)
+);
 
 INSERT INTO telephone (id_contact, numero, type) VALUES
 (1, '555-0101', 'mobile'),
